@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex11_for.html</title>
+</head>
+<body>
+    <h1>제어문-for루프</h1>
+    <script>
+        for(var i=0;i<3;i++){
+            document.write("Hello: "+i,"<br>");
+        }
+        for(j=3;j>-1;j--){
+            document.write("Hi: "+j,"<br>");
+        }
+        /*[실습1] prompt()로 구구단의 단을 입력받으세요.
+        그러면 해당 구구단을 출력하세요.
+        단 table태그를 이용해서 테이블형태로 출력하세요.
+         [실습2] 입력받은 단이 짝수단이면 테이블 배경색을 
+                yellow로, 홀수단이면 배경색을 skyblue로 주세요
+        */
+        var dan=prompt("구구단의 몇단을 할까요?");
+        
+        var cr=(dan%2==1)?"skyblue":"yellow";
+
+        var str="<table border='1' style='width:200px;background-color:"+cr+";text-align:center'>";
+        for(var i=1;i<10;i++){  
+            str+="<tr>"; 
+               str+="<td>";          
+            //document.write(dan+"x"+i+"="+ dan*i,"<br>");
+                    str+=dan+"x"+i+"="+(dan*i);
+               str+="</td>" 
+            str+="</tr>";
+        }
+        str+="</table>";
+        document.write(str);
+
+    </script>
+</body>
+</html>
+
+

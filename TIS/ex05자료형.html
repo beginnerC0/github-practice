@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex05자료형</title>
+</head>
+<body>
+    <h1>참조유형 : object, function, null</h1>
+    <script>
+        function print(str){
+            document.write(str,"<br>");
+        }
+
+        var a=100;//number
+        print("<h1>"+a+"</h1>");
+
+        var car = new Object();//ojbect유형 객체생성
+        //객체(속성[변수], 행동양식[메소드])
+        car.color = 'blue';
+        car.size = 3000;
+        car.run = function() {
+            print("<h2>"+this.color+"색상의 차가 달린다</h2>");
+            print("<h2>자동차 size : "+this.size+"</h2>");
+        }
+        
+        //함수 호출
+        car.run();
+        print("<hr color='red'>");
+        print('typeof(car) : '+typeof(car)); 
+        print('typeof(car) : '+typeof(car.run));
+        print('typeof(car.clor) : '+typeof(car.color));
+        print('typeof(car.size) : '+typeof(car.size));
+        
+    </script>
+    <hr color="red">
+    <!-- [실습] 학생 객체를 생성하고 속성으로 학생의 이름,학번,학급을
+    부여하여 값을 주세요.
+    함수도 구성하되 info() => 학생의 정보 출력하는 함수
+-->
+    <hr color="blue">
+
+    <script>
+
+        var student = new Object();
+        student.name = '박진하';
+        student.num = 201616080;
+        student.class = 'tour';
+        student.run = function() {
+            print("<h2>학생의 name : " + this.name+입니다+"</h2>")
+            print("<h2>학생의 num :" + this.num+학번입니다+"</h2>")
+            print("<h2>학생의 class : " + this.class+학급입니다+"</h2>")
+        }
+
+        student.run();
+        print("<hr color='blue'>");
+        print('typeof(name) : ' + typeof(name));
+        print('typeof(num) : ' + typeof(num));
+        print('typeof(name) : ' + typeof(student.class));
+     
+
+    </script>
+</body>
+</html>

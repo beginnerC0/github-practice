@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>배열의 sort()</h1>
+    <script>
+        let names=["나길동","오길동","김길동","박길동"];
+        //[1] names배열에 저장된 값을 forEach()함수를 이용해 출력하기
+        names.forEach(function(let, i){
+            document.write(let+", ");
+        })
+        document.write("<br>");
+
+        //[2] names배열을 오름차순 정렬해서 출력하기
+        //names.sort();
+        names.reverse();
+        document.write(names,"<br>");
+
+        //자바스크립트 객체
+        var p=new Object();
+        p.name="나길동";
+        p.age=25;
+        p.info=function(){
+            var str=`<h1>이름:${this.names}, 나이:${this.age}</h1>`;
+            return str;
+        }
+
+        //자바스크립트 객체
+        var p2={
+            name: '김길동',
+            age:27,
+            info:function() {
+                var str=`<h1>이름:${this.names}, 나이:${this.age}</h1>`;
+                return str;
+            }
+        }
+
+        var persons=[
+            p,
+            p2,
+            {name:'박길동',age:17},
+            {name:'김진명',age:27}
+        ];
+        document.write("<hr color='red'>")
+        //[1] persons에 저장된 요소들의 이름과 나이를 foreach()이용해 출력
+        persons.forEach(function(obj, i){
+           document.write(obj.name+", "+obj.age+"세 ,");
+        })
+        document.write("<hr color='green'>")
+        //[2] persons에 저장된 요소들을 나이 오름차순으로 정렬하세요
+        //[3] persons에 저장된 요소들을 이름 오름차순으로 정렬하세요
+        persons.sort(function(a, b){
+            //return a-b;//오름차순
+            //b-a 내림차순
+            return a.age - b.age;
+            //반환값에 따라 정렬함. 0이나 음수가 나오면 그대로 두고
+            //양수가 나오면 서로의 위치를 바꿔준다.
+        });
+        
+        persons.forEach(function(obj, i){
+           document.write(obj.name+", "+obj.age+"세 ,");
+        })
+        document.write("<hr color='red'>")
+
+        persons.sort(function(a, b){
+
+            //return (a.name>b.name)? 1:-1;//이름 오름차순
+            return (a.name<b.name)? 1:-1;//이름 내림차순
+
+        });
+
+        persons.forEach(function(obj, i){
+           document.write(obj.name+", "+obj.age+"세 ,");
+        })
+
+    </script>
+</body>
+</html>

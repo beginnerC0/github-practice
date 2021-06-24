@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>자바 스크립트 자료형</h1>
+    <h2>1. 기본자료형
+        number(정수형, 실수형), boolean(true, false),
+        String, undefined, null
+    </h2>
+    <h2>2. 참조형
+        object, function
+    </h2>
+    <script>
+        //[1] number(정수, 실수)
+        var a=10;
+        window.document.write("a="+a,"<br>");
+        document.write("a의 자료형 알아보기 : "+typeof(a),"<br>");
+        var b=3.14;
+        window.document.write("b="+b,"<br>");
+        document.write("b의자료형 알아보기 : "+typeof b,"<br>");
+
+        document.write("<hr color='red'>");
+        //[2] boolean
+        var c=true;
+        var d=2>3;
+        document.write("c="+c, " d="+d,"<br>");
+        document.write(typeof c, typeof d,"<br>");
+
+        //[3] String 
+        var str="<button style='background:orange'>나는 문자열이야</button>";
+        document.write(str,"<br>");
+        document.write(typeof(str),"<br>");
+        var str2='<h1 style="color:blue">반갑습니다.</h1>';
+        document.write(str2,"<br>");
+
+        //[4] undefined
+        var e;//변수 선언만 하고 초기화 되지 않은 상태
+        document.write("e="+e,"<br>");
+        document.write(typeof(e),"<br>");
+
+        //[5] null
+        var f=null;
+        document.write("f="+f,"<br>");
+        document.write(typeof(f),"<br>");
+        f=50;
+        document.write("f="+f,"<br>");
+        document.write(typeof(f),"<br>");
+        f="해윙~";
+        document.write("f="+f,"<br>");
+        document.write(typeof(f),"<br>");
+
+        
+    </script>
+   <script src="02Alert.js"></script>
+
+</body>
+</html>

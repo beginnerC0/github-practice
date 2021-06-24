@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex12_for.html</title>
+</head>
+<body>
+    <h1>3행 5열 형태의 테이블을 출력하되, for루프 이용하세요</h1>
+    <script>
+        var row=3;
+        var col=5;
+        //중첩 for루프 이용해서 테이블 만들기=> "1행1열"
+        var str="<table border='1'>";
+            for(var i=0;i<row;i++){
+                str+="<tr>";
+                for(var k=0;k<col;k++){
+                    str+="<td>";
+                        str+=(i+1)+"행 "+(k+1)+"열";
+                    str+="</td>";
+                }    
+                str+="</tr>";    
+            }
+            str+="</table>";
+
+        document.write(str);    
+    </script>
+    <hr color="red">
+    <h1>[2] prompt로 행, 열, 배경색을 입력을 받아 테이블을 구성하세요</h1>
+    <script>
+    const r = prompt("행을 입력해주세요",5);
+    const c = prompt("열을 입력해주세요",7);
+    const cr = prompt("배경색을 입력해주세요",'gold');
+
+    const str="<table border='1' style='background:"+cr+"'>";
+        for(const i=0;i<r;i++){
+            str+="<tr>";
+            for(const k=0;i<c;k++){
+                str+="<td>";
+                    str+="땅콩";
+                str+="</td>";
+            }
+            str+="</tr>";
+        }
+        str+="</table>";
+        document.write(str);
+    </script>
+    <hr color="red">
+    <h1>[3] 구구단 전체를 테이블 형태로 구성하기</h1>
+
+
+</body>
+</html>
+
+<!-- ex12_for.html -->

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>함수와 매개변수</h1>
+    <script>
+        sum(500,500);//hoisting - 선언한걸 위에서 끌어다 쓸 수 있음
+        //function으로 함수명을 구성한 경우
+        //아래서 구성이 되어도 위에서 해당 함수를 호출할 수 있다.
+
+      
+        //[1] function 함수명([매개변수]){...}
+        function sum(a, b) {
+            document.write("<h2>"+a+"+"+b+"="+(a+b)+"</h2>")
+        }
+
+        sum(18,32);
+        sum(150,350);
+        sum("하이", "빅스비");
+        sum(1);
+        /*1+underfined=NaN (NOT a NUMBER)*/ 
+
+        //[2] var 변수명 = function([매개변수]) {...}
+
+        //리터럴 방식으로 함수를 구성한 경우는 hoisting이 지원되지 않음
+        //반드시 함수를 구성한 후에 호출 가능하다
+        //gop(10,4);
+        var gop = function(a,b) {
+            document.write("<h2>"+a+"*"+b+"="+(a*b)+"</h2>");
+        }
+        gop(10,4);
+
+        //[실습]
+        //숫자를 받아들여 해당 값의 거듭제곱을 구해 반환해주는 함수를 구성해보자
+        dougop(8);
+        function dougop(a) {
+            document.write("<h2>"+a+"*"+a+"="+(a*a)+"</h2>")
+        }
+
+        /*
+        var gop=function(a) {
+            return a*a;
+        }
+        var b=gop(8);
+        alert(b);
+        */
+        
+
+    </script>
+</body>
+</html>

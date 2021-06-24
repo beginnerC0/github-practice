@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex08연산자.html</title>
+</head>
+<body>
+    <h1>자바스크립트 연산자</h1>
+    <script>
+        var num1=window.prompt("정수 1을 입력하세요");
+        var num2=prompt("정수 2를 입력하세요");
+
+        print(num1+" typeof num : "+typeof num1);
+        print(num2+" typeof num2 : "+typeof num2);
+        //문자열을 정수형으로 변환하는 함수 => parseInt(문자열)
+        //문자열을 실수형으로 변환하는 함수 => parseFloat(문자열)
+        //문자열을 숫자로 변환하는 함수 => Number(문자열)
+
+        //입력받은 값을 이용해서 산술연산(+,-,*,/,%)을 수행해보자
+        //var n1=parseInt(num1);
+        //var n2=parseInt(num2);
+        var n1 = Number(num1);
+        var n2 = Number(num2);
+
+        print(n1+" typeof n1 : "+typeof n1);
+
+
+        print(num1+"+"+num2+"="+(num1+num2));
+        print(num1+"-"+num2+"="+(num1-num2));
+        print(num1+"*"+num2+"="+(num1*num2));
+        print(num1+"/"+num2+"="+(num1/num2));
+        print(num1+"%"+num2+"="+(num1%num2));
+
+        function print(str) {
+            document.write(str,"<br>");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --facebook : #3b5998
+}
+
+.wrap-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.play-time {
+    font-size: 4rem;
+    margin-top: 12rem;/*높이 조정?*/
+    color: var(--facebook);
+}
+
+ul {
+    margin-top: 2rem;
+    list-style: none;
+    border: 2px solid #3b5998;
+    display: grid;/*display 여기는 약간 화면 고정 기능?*/
+    grid-template-columns: repeat(4, 1fr);/*여기 뭐야*/
+    
+}
+
+li {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    color: #fff;
+    background: url("https://placeimg.com/400/400/2");
+}
+
+.start-button {
+    background: var(--facebook);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+}
+
+.game-text {
+    position: absolute;
+    font-size: 40px;
+    color:#67c23a;
+    text-shadow: 1px 1px rgba(0,0,0);
+    display: none;
+    
+}
+
+.list0 {
+    background-position-x: 0px;
+    background-position-y: 0px;
+}
+/*11분 25초*/
+
+.list1 {
+    background-position-x: -100px;
+    background-position-y: 0px;
+}

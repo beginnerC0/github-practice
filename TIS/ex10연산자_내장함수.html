@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex10연산자</title>
+</head>
+<body>
+    <h1>연산자</h1>
+    <script>
+        const a=3.8;
+        const b=1.2;
+
+        //a+b 값 출력하기=>5.0
+        print(a+b);
+        //a*b 값 출력하기
+        print(a*b);
+
+        const a1 = parseFloat(a);
+        const b1 = Number(b);
+
+        var w=5;
+        var q="5.0";
+        //[1] == : 값을 비교한다. 자료형이 달라도 값이 같으면 true, 다르면 false
+        //[2] === : 자료형과 값이 같으면 true, 하나라도 다르면 false
+        print("w==q : "+(w==q));
+        print("w===q : "+(w===q));
+      
+        var e = true;
+        var f = false;
+        print(typeof(e)+", "+typeof(f));
+
+        var g=Boolean(f);
+        print('g의 자료형 : '+typeof(g))
+
+        //Boolean()함수는 매개변수에 값이 잇으면 true로 판단
+        
+
+        print(Boolean(""));
+        print(Boolean(" "));
+        print(Boolean('0'));
+        print(Boolean(undefined));
+        print(Boolean(null));
+        print(Boolean(false));
+        print(Boolean(true));
+
+        const h=10.12;
+        print('h의 자료형 : '+typeof(h));
+        print(typeof(h+"")); //문자열과 결합하면 문자열이된다
+        //내장함수 : 교재 154p
+        //isNaN(값) : 매개변수 값이 숫자가 아니면 true를 반환, 숫자면 false
+        print(isNaN("5-2"));
+        print(isNaN(5));
+
+        function print(str) {
+            document.write("<h1>"+str+"</h1>");
+        }
+        
+    </script>
+
+</body>
+</html>

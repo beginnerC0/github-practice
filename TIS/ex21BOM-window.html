@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //window객체의 open()함수
+        function openWin(){
+            //let url="http://www.google.com";
+            let url="ex12For.html";
+
+        win=window.open(url,"popup","width=500,height=500,left=100, top=100")
+
+            //open(url, target(새창이름),width,height, x,y)
+        }
+
+        function closeWin(){
+            //window객체의 close()함수 사용
+            if(win!=null){
+                win.close();
+                win=null;
+            }
+        }
+
+        let changeLoc=function(){
+            //window객체의 moveTo(x,y)
+            //제약: 동일한 도메인일 경우에만 동작함
+            if(win!=null){
+                win.moveTo(300,300);
+            }
+        }
+
+        let changeSize=function(){
+            //resizeTo(w,h)
+            //제약: 동일한 도메인일 경우에만 동작함
+            //팝업창의 사이즈를 800,800으로 변경해보기
+            if(win!=null){
+                win.resizeTo(800,800);
+            }
+        }
+        function show(){
+            //window객체의 setTimeout(함수, 밀리초)
+            //: 지정된 밀리초가 지나면 함수를 호춣나다. 딱 한번만 호출함
+          /*  wid=window.setTimeout(function(){
+                alert('꽝!!!');
+            },2000);
+        }*/
+        wid=setTimeout(openWin,2000);
+    }
+        function stop(){
+            //setTimeout()을 중지시키려면 clearTimeout(wid)을 호출함
+            if(wid!=null){
+                window.clearTimeout(wid);
+                wid=null;
+            }
+        }
+
+        function goNaver(){
+           setTimeout(function(){
+               location.href='http://www.naver.com'
+           },3000);
+        }
+    </script>
+</head>
+<body>
+    <h1>브라우저 내장객체=BOM(Browser Object Model)</h1>
+    <pre>
+        자바스크립트 객체
+        1. 브라우저 내장객체(BOM)
+        2. 내장객체(Date, Math, String, Array,....)
+        3. 문서객체 모델(DOM): HTML문서 구조를 이루는 객체들
+        4. 사용자 정의 객체
+        등으로 나눌 수 있다.
+    </pre>
+    <HR COLOR='RED'>
+        <h1>window객체</h1>
+        <button onclick="openWin()">팝업창 열기</button>
+        <button onclick="closeWin()">팝업창 닫기</button>
+        <button onclick="changeLoc()">팝업창 위치변경</button>
+        <button onclick="changeSize()">팝업창 크기변경</button>
+        <HR COLOR='blue'>
+            <h1>window객체의 setTimeout()/clearTimeout()활용</h1>
+            <button onclick="show()">Click Me</button>
+            <button onclick="stop()">Stop</button>
+            <button onclick="goNaver()">3초 뒤에 네이버로 이동</button>
+</body>
+</html>
+<!--ex21BOM_window.html-->

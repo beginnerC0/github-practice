@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var wid = null;
+        function show() {
+            //주기적으로 반복해서 함수를 호출
+            if(wid==null){
+            wid=setInterval(function() {
+                    alert('꽝!');
+                },2000);
+             }
+        }
+        function stop () {
+            if(wid!=null){
+                clearInterval(wid);
+                wid=null;
+                }
+            }    
+    </script>
+    <style>
+        div#result{
+            padding: 2rem;
+            border: 2px dashed mediumaquamarine;
+        }
+    </style>
+</head>
+<body>
+    <h1>window객체의 setInterval()/clearInterval()</h1>
+    <button onclick="show()">Click Me</button>
+    <button onclick="stop()">Stop</button>
+    <hr color="red">
+    <button onclick="nowTime()">누른 시간 보여주기</button>
+
+    <button onclick="startclock()">시계 동작</button>
+    <button onclick="stopclock">시계 동작</button>
+    <hr color="green">
+    <div id="result">
+
+    </div>
+
+    <script>
+        let nowTime=function(){
+            //내장객체: Date
+            let d=new Date();
+            let obj=document.getElementById('result');//id가 result인 값을 반환
+            //alert(obj);
+            obj.innerHTML="<h1>오늘 날짜는?</h1>";
+
+            let str=d.getFullYear()+"년 ";//년도를 가져오기
+                str+=(d.getMonth()+1)+"월 ";//month값은 +1 해줘야함 0부터 시작하기 때문에!
+                str+=d.getDate()+"일 ";
+                str+=d.getHours()+": "+d.getMinutes()+": "+d.getSeconds();
+
+            obj.innerHTML+="<h2 style='color:tomato'>"+str+"</h2>";    
+        }
+
+        let wtime=null;
+        let startclock=function() {
+            //1초에 한번씩 시간 정보 얻어와 시계 출력하기
+            if(wtime==null)  
+                 wtime=setInterval(nowTime,1000);
+
+        }
+
+        let stopclock=function() {
+            if(wtime!=null){
+                clearInterval(wtime);
+                wtime=null;
+            }
+        }
+    </script>
+</body>
+</html>

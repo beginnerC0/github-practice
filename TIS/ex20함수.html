@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>함수</h1>
+    <script>
+        //1. function 함수명(매개변수){.....}
+        //2. literal 방식
+        // var 변수명 = function(매개변수){...} => hoisting안됨
+        say("How are yo?","scott");
+
+        function say(msg, name) {
+            document.write(`<h1>${msg} ${name}</h1>`);
+        }
+        say("안녕하세요?","김길동");
+
+        //hi('jas'); [x]
+
+        let hi = function(name){
+            alert('Hi~~'+name);
+        }
+
+        hi('blue');
+
+    </script>
+</body>
+</html>

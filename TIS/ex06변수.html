@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex06변수.html</title>
+</head>
+<body>
+    <h1>전역변수, 지역변수, 매개변수, 변수의 scope</h1>
+
+    <script>
+        /*함수구성*/
+        var global="전역변수";
+        function hello() {
+            var local="지역변수";
+            aaa=500;//var를 생략하고 변수를 선언, 초기화하면 => 전역변수
+            var bbb=600;//지역변수
+            alert('global='+global);
+            alert('local='+local);
+            alert('aaa='+aaa);
+            alert('bbb='+bbb);
+        }
+
+        function hi () {
+            alert('hi global='+global);
+            //alert('hi local='+local);[x] 지역변수의 scope는 해당
+            //메소드 블럭내부에서만 사용 가능하다.
+            
+            alert('hi aaa='+aaa);//전역변수
+            //alert('hi bbb='+bbb); //지역변수
+        }
+
+        /*함수호출*/
+        hello();
+        hi();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">BOM-document객체</h1>
+    <h2>h2태그입니다. 1</h2>
+    <h1 class="mycls">h1태그입니다. 2</h1>
+    <h2>h2태그입니다. 3</h2>
+    <h1>h1태그입니다. 4</h1>
+    
+    <button class="mybt" id='btn1' onclick="changeBt()">버튼색상 변경</button>
+    <button class="mybt"  onclick="changeH1()">h1태그들의 글자색변경</button>
+    <button class="mybt"  onclick="changeH2()">h2태그들의 글자색변경</button>
+    <button class="mybt"  onclick="changeBt2()">버튼들의 배경색변경</button>
+
+    <div id="wrap">
+        <button class="mybt">button1</button>
+        <button class="mybt">button2</button>
+        <button class="mybt">button3</button>
+    </div>
+
+    <script>
+        //document객체의 주요 메소드
+        //[1] getElementById('아이디')
+        //[2] querySelector('#아이디') or (클래스)
+        function changeBt() {
+            //[1]id가 btn1인 버튼 요소를 찾아서 배경색을 cyan으로 변경
+            //document.getElementById(아이디)
+            
+            const b1 = document.getElementById('btn1');//단수
+            //alert(b1); 작동하는지 확인
+            b1.style.backgroundColor='cyan';
+
+            //[2] id가 title인 요소를 찾아서 글자색을 tomato색으로 변경
+            const b2 = document.querySelector('#title');
+            b2.style.color='tomato';
+
+            const b3 = document.querySelector('.mycls');
+            b3.style.color='blue';
+            
+        }
+
+        function changeH1() {
+            //[3]getElementByTagName('태그명')==>반환타입 collection유형
+            let c1 = document.getElementsByTagName('h1');//복수
+            //alert(c1);
+            //반복문 돌면서 각 요소의 글자색을 hotpink로 변경
+            for(let i=0;i<c1.length;i++) {
+                c1[i].style.color='hotpink';
+            }
+        }
+        //h2 태그들을 찾아서 배경색을 알아서 주기. 테두리도 2px dotted purple로
+        function changeH2() {
+            let c2 = document.getElementsByTagName('h2');
+            //alert(c2);
+            for(let i=0;i<c2.length;i++){
+                c2[i].style.backgroundColor='green';
+                c2[i].style.border='2px dotted purple';
+                c2[i].style.padding='5px';
+                c2[i].style.color='blue';
+            }
+        }
+        //[실습] 클래스명 중에 mybt로 지정되어 있는 버튼들을 찾아서
+        //배경색: 알아서, padding: 5px 글자색 :알아서 
+        //[4] getElementsByClassName('클래스명')
+        //[5] querySelectorAll('.클래스명')
+        function changeBt2() {
+            //let c3 = document.getElementsByClassName('mybt');
+            let c3 = document.querySelectorAll('#wrap .mybt');
+
+            for(let i in c3){
+                c3[i].style.backgroundColor='navy';
+                c3[i].style.color='white';
+                c3[i].style.padding='5px';
+            }
+        }
+        
+        
+    </script>
+
+</body>
+</html>

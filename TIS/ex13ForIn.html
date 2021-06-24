@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForIn</title>
+</head>
+<body>
+    <h1>for ~ in 루프문</h1>
+    <pre>
+        for 변수 in 객체 (또는 배열, Collection)
+        {
+            변수는 객체의 속성(property)을 참조한다.
+        }
+    </pre>
+    <hr color="red">
+    <script>
+        //tv객체 생성해서 color, model, price속성 추가하기
+        const tv=new Object();
+        tv.color='black';
+        tv.price=100000;
+        tv.model='ss123';
+        tv.info();
+        document.write(tv.model,"<br>")
+        document.write(tv['color'],"<br>");//tv.color와 동일
+        //tv.color, tv model
+        for(const k in tv){
+            document.write(`<h2 style='color:maroon'>${k}=${tv[k]}</h2>`);
+        }
+    </script>
+    <hr color="blue">
+    
+</body>
+</html>

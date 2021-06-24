@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BOM-document객체</h1>
+    <script>
+        /*window.document 객체의 속성 ==> document는 window 바로 아래단계
+        [1] title : 현재 문서의 title태그의 내용을 출력하거나 설정할 때 사용
+        [2] lastModified(): 현재 문서가 마지막에 저장된 시간
+        [3] bgColor : 현재 문서의 배경색
+        [4] fgColor : 현재 문서의 글자색
+        */
+       window.document.write("<h2>"+window.document.title+"</h2>");
+       document.title="현재 문서의 제목";
+
+       document.write(`<h2>현재 문서가 마지막으로 저장된 시간 : ${document.lastModified} </h2>`);
+
+       document.bgColor="orange";//배경색
+       document.fgColor="purple";//글자색
+    </script>
+</body>
+</html>

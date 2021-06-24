@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>적정 체중을 구하는 프로그램</title>
+</head>
+<body>
+    <h1>적정 체중을 구하는 프로그램</h1>
+    <div>
+        [실습] 이름, 키, 몸무게를 입력받아서 적정 체중을 구한 뒤 비교하여
+               적정 체중을 10% 초과하면  '과체중(red)', 적정 체중 10% 미달이면
+               '체중 미달(blue)', 그 외에는 '적정체중(green)'을 출력하세요
+               <br><br>
+    <h2 style="color :brown">
+        적정 체중 = (신장 - 100) * 0.9 를 적정체중으로 봅니다.
+    </h2>
+    <hr>
+    <script>
+         //이름, 키, 몸무게를 입력받아 받은 값 출력하기. (prompt())
+         var na = prompt("이름을 입력하세요");
+         var heig = prompt("키를 입력하세요");
+         var weig = prompt("몸무게를 입력하세요");
+
+         var normal = (heig - 100)*0.9;//표준 체중을 구하는 공식 변수로 받음
+
+         var h = Number(heig);//문자형 타입의 키를 숫자로 변환
+         var w = Number(weig);//문자형 타입의 몸무게를 숫자로 변환
+
+         print("이름 : "+na);
+         print("키 : "+heig);
+         print("몸무게 : "+weig);
+         print("적정체중 : "+normal);
+
+         var reset="당신은";
+         var col="";
+         if(weig > normal*1.1){
+             reset="과체중";
+             col="red";
+         }else if(weig < normal*0.9){
+             reset="저체중";
+             col="blue";
+         }else {
+             reset="적정체중";
+             col="green";
+         }
+
+         print(reset,col);
+
+
+        function print(str, col) {
+            if(col==undefined){
+                document.write("<h1>"+str+"</h1>");
+            }else{
+                document.write("<h1 style='color :"+col+"'>"+str+"</h1>")
+            }
+            document.write("<h1>"+str+"</h1>");
+        }
+
+    </script>
+
+    <script>sdssds</script>
+</body>
+</html>
