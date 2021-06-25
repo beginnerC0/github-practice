@@ -8,40 +8,106 @@
     <style>
         body{
             background-color: black;
-            color: white;
+            color:white;
         }
         div.menu{
-            /*border: 1px solid white;*/
+            /* border:1px solid white; */
             text-align: center;
-            padding: 1em;/*상대적 크기*/
+            padding:1em;
         }
         div.menu button{
-            width: 100px;
-            height: 28px;
-            padding: 4px;
-            margin: 3px;
+            width:100px;
+            height:28px;
+            padding:4px;
+            margin:3px;
+        }
+        div.movies{
+            /* border:2px solid white; */
+            width:1010px; /*200x5*/
+            text-align:center;
+            margin: 50px auto; /*상하:50px, 좌우 : 자동*/
+        }
+        div.movies img{
+            width:198px;
+            height:293px;
+            border:1px solid white;
+            padding:1px;
         }
     </style>
 </head>
 <body>
     <div class="menu">
-        <button id="btCur">현재 상영작</button>
-        <button id="btPlay">▶</button>
-        <button id="btStop">■</button>
+        <button id="btnCur">현재 상영작</button>
+        <button id="btnPlay">▶</button>
+        <button id="btnStop">■</button>
     </div>
     <div class="movies">
-        <!-- 여기에 영화 이미지 삽입 -->
+        <!-- <img src="파일경로"> -->
 
     </div>
 
     <script>
-          //[1] 현재 상영중인 영화이미지 5개를 배열에 저장하기
-          const movie = [a.png,b.png,c.png,d.png,e.png];
+      //[1] 현재 상영중인 영화이미지 5개를 배열에 저장하기
+      //var movies=['a.png','b.png','c.png','d.png','e.png'];
+        var movies=new Array('a.png','b.png','c.png','d.png','e.png');
 
-           //[2] 현재 상영작 버튼을 클릭하면 배열에 저장한 영화 이미지를
-           //id가 movies인 곳에 나타나도록 처리하기
-           
+        var btn1=document.getElementById('btnCur');
+        var btn2=document.getElementById('btnPlay');
+        var btn3=document.getElementById('btnStop');
+
+        var moviesClass=document.getElementsByClassName('movies');
+        //Collection유형
+        var wid=null;
+        var x=0;//x 좌표
+        var i=1;//증가치
+
+        
+       //[2] 현재 상영작 버튼을 클릭하면 배열에 저장한 영화 이미지를
+        // 클래스가 movies인 곳에 나타나도록 처리하기
+        btn1.onclick= function(){
+            showMovies();
+        }
+        function showMovies(){
+            var str='';
+            movies.forEach(function(mv, i){
+                //alert(mv);
+                str+=`<img src="images/${mv}" id="movie${i}">`;
+            })
+            moviesClass[0].innerHTML=str;
+        }
+
+        //[3] 플레이 버튼을 누르면 영화 이미지들이 오른쪽으로 이동하도록 처리
+        //    오른쪽 끝으로 다 이동하면 다시 왼쪽으로 이동시키고
+        //    왼쪽 끝에 이동하면 다시 오른쪽으로 이동하기
+        btn2.onclick=function(){
+            if(wid==null){
+                wid=setInterval(function(){
+                    var bw=document.body.clientWidth-1010;
+                    //console.log('bw==='+bw);
+                    if(x>bw){
+                        i=-1;
+                    }
+                    if(x<0){
+                        i=1;
+                    }
+                    moviesClass[0].style.marginLeft=x+"px";
+                    x+=i;
+                }, 20);
+            }
+        }
+
+        btn3.onclick=function(){
+            if(wid!=null){
+                clearInterval(wid);
+                wid=null;
+            }
+        }
+
+        window.onload=function(){
+            showMovies();
+        }
+
     </script>
-
+    
 </body>
 </html>
