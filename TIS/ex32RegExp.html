@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            font-size:0.8em;
+            color:red;
+        }
+    </style>
+    <script>
+        //http://regexr.com 
+        function check(){
+           if(! f.userid.value){
+               alert('아이디를 입력하세요');
+               f.userid.focus();
+               return;
+           }
+           if(!isUserid(f.userid)){
+               alert('아이디는 4~8자 영자/숫자,!,_ 만 사용가능 합니다');
+               f.userid.select();
+               return;
+           }
+           if(!isPasswd(f.userpwd)){
+               alert('알파벳으로 시작하고 영문,숫자,!,_,.를 포함 4~8자 이내여야 해요');
+               f.userpwd.select();
+               return;
+           }
+           if(f.userpwd.value != f.userpwd2.value){
+               alert('비밀번호와 비밀번호 확인이 서로 달라요');
+               f.userpwd2.select();
+               return;
+           }
+           if(!isKor(f.uname)){
+               alert('이름은 한글만 가능하고 공백으로 시작하면 안됩니다');
+               f.uname.select();
+               return;
+           }
+           if(!isDate(f.birth)) {
+               alert('생년월일은 날짜형식이어야 해요[yyyy-mm-dd]')
+               f.birth.select();
+               return
+           }
+
+
+        }//check()-------------------
+
+        function isDate(obj) {
+            let val=obj.value;
+            alert(val);
+            let pattern=/ /;
+            return pattern.test(val);
+        }
+
+        /*
+        가-힣: 한글이어야 함
+        \s : 공백문자 포함 가능
+        + : 패턴이 1개 이상 옴을 의미
+        */
+        function isKor(obj){
+            let val=obj.value;
+            alert(val);
+            let pattern=/^[가-힣]{1}[가-힣\s]+$/;            
+            return pattern.test(val);
+        }
+
+
+
+        /*
+        ^ :시작
+        [A-Za-z]{1}:알파벳이 1자 필수입력(알파벳으로 시작)
+        \w: 알파벳과 숫자를 의미 (<=> \W : 알파벳,숫자가 아니어야 함을 의미)
+        !_. : !,_,. 를 허용함을 의미
+        {3,7}: 3자 이상 7자 이내
+        $: 끝
+        */
+        function isPasswd(obj){
+            let val=obj.value;           
+            let pattern=new RegExp(/^[A-Za-z]{1}[\w!_.]{3,7}$/);
+            let bool=pattern.test(val);
+            return bool;
+        }//isPasswd()----------------
+
+
+
+        /*정규식 객체: RegExp객체를 이용해서 특정 패턴에 맞는값인지 여부를 체크해보자.        
+        ^: 시작을 의미
+        A-Z: 알파벳 대문자
+        a-z: 알파벳 소문자
+        +  : 패턴이 1개 이상 반복됨을 의미 
+        0-9: 숫자
+        {4,8}: 4자 이상 8자 이내
+        $: 끝을 의미
+        */
+       
+        function isUserid(obj){
+            let val=obj.value;
+            //let pattern=new RegExp(/^[A-Za-z0-9_!]{4,8}$/);
+            let pattern=new RegExp(/^[A-Za-z]{1}[A-Za-z0-9_!]{3,7}$/);
+            // test()함수=>패턴에 해당하는 문자열이면 true를 반환,
+            //              아니면 false를 반환한다.
+            let bool=pattern.test(val);
+            console.log('bool==='+bool);
+            return bool;
+        }//isUserid()----------------
+    </script>
+
+</head>
+<body>
+    <h1 style="text-align: center;">정규식을 이용한 회원가입 유효성 체크</h1>
+    <form name="f" action="join.jsp" method="post">
+        <table align="center"  width="800">
+            <tr>
+              <td colspan="2" align="left"><sb><strong>☞아이디(ID)정보</strong></sb></td>
+              <!--<td></td>-->
+            </tr>
+            <tr>
+              <td bgcolor=#fdfb93 align="right">*아이디</td>
+              <td><input type="text" name="userid" style="width:300px;"> <input type="button" value="중복확인" onclick="alert('사용할수 있는 아이디')">
+              <br><span>(4~8자 영자/숫자,!,_ 가능,한글,특수문자 ID는 사용할수 없습니다.)</span></td>
+            </tr>
+            <tr>
+              <td bgcolor=#fdfb93 align="right">*비밀번호</td>
+              <td><input type="password" name="userpwd" style="width:300px;"><span>
+              (4~8자 이내,알파벳으로 시작해야 하고, 알파벳,숫자,!,_,.을 포함할 수 있어요.)</span></td>
+            </tr>
+            <tr>
+              <td bgcolor=#fdfb93 align="right">*비밀번호 확인</td>
+              <td><input type="password" name="userpwd2" style="width:300px;"><span>(위 번호와 같이 입력해 주세요.)</span></td>
+            </tr>
+            <tr>
+              <td colspan="2" bgcolor=#33ccff><sb><strong>☞개인정보</strong></sb></td>
+              <!--<td></td>-->
+            </tr>
+            <tr>
+              <td bgcolor=#fdfb93 align="right">*이름(한글)</td>
+              <td><input type="text" name="uname" placeholder="이름을 입력하세요"
+              style="width:300px;"><span>(예:박정현)</span></td>
+            </tr>  
+            <tr>
+              <td bgcolor=#fdfb93 align="right">생년월일</td>
+              <td><input type="text" name="birth"> 
+          <span>*날짜 형식[yyyy-mm-dd 또는 yyyy/mm/dd]이어야 해요</span>          
+            </tr>
+            <tr>
+              <td bgcolor=#fdfb93 align="right">*주소</td>
+              <td><input type="text" style="width:200px;"><button>우편번호 찾기</button><br>
+              <input type="text" style="width:500px;"></td>
+            </tr>
+            <tr>
+              <td bgcolor=#fdfb93 align="right">*전화번호</td>
+              <td><tu>핸드폰</tu><input name="hp1" type="text" style="width:50px;">-<input type="text"  name="hp2" style="width:50px;" >
+                  -<input type="text"  name="hp3" style="width:50px;">
+              <input type="radio" name="phon" value="SKT">SKT
+              <input type="radio" name="phon" value="KTF">KTF
+              <input type="radio" name="phon" value="LGT">LGT<br>   
+              </td>
+            </tr>
+            <tr>
+              <td bgcolor=#fdfb93 align="right">*직업</td>
+              <td><select name="job">
+                      <option value="choyse">직업을 선택하세요</option>
+                      <option value="developer">개발자</option>
+                      <option value="operator">운영자</option></td>
+            </tr>
+            <tr>
+              <td bgcolor=#fdfb93 align="right">이메일</td>
+              <td><input type="text" name="email" style="width:300px;"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="button" onclick="check()">회원가입</button>
+                    <button type="reset">다시쓰기</button>
+                </td>
+            </tr>
+            </table>
+    </form>
+
+</body>
+</html>
+<!-- ex32RegExp.html -->
