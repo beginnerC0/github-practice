@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function print(val){
+            document.write('<h1>'+val+'</h1>')
+        }
+        var num=23.7456;
+        var x = Math.round(num);//반올림=> 소수점 첫째자리에서 반올림한 정수값을 반환
+        print(x);
+        x=Math.floor(num);//내림함수
+        print(x);
+        x=Math.ceil(num);//올림함수
+        print(x);
+        x=Math.max(88,45,100,79,91);//최대값을 반환한다.
+        print(x);
+        x=Math.min(88,45,100,79,91);//최소값을 반환
+        print(x);
+
+        r=Math.random();//0.0<= r <1.0 임의의 실수를 반환
+        print(r);
+        //[1] 0<= r2 < 10 임의의 정수를 발생시켜 출력하세요
+        r2=Math.floor(Math.random()*10);
+        print(r2);
+        //[2] 45<= r3 <68 임의의 정수를 발생시켜 출력하세요 
+        r3=Math.floor(Math.random()*23 +45);
+        print(r3);
+        print(Math.PI)
+    </script>
+    
+</body>
+</html>

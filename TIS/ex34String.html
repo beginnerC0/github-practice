@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>String</h1>
+    <!-- 1. 리터럴을 이용한 String(기본자료형)
+         2. 생성자 함수를 이용한 String(Object형)
+    -->
+    <script>
+        let str="Hello JavaScript"; //1. 리터럴 방식
+        let str2=new String("Hi");//2. 생성자 함수 이용
+        console.log('str=', typeof str);
+        console.log('str2=', typeof str2);
+
+        function print(val) {
+            document.write(`<h2>${val}</h2>`)
+        }
+        //[1] length 속성
+        print('str의 문자열 길이 : '+str.length);
+        print('str2의 문자열 길이 : '+str2.length);
+
+        //[2] slice(start, [end]):start부터 end인덱스 직전까지 조각내어 반환
+        print(str.slice(0,5));//Hello
+        print(str.slice(6))//JavaScript
+        print(str.slice(-10));//뒤에서부터 -10인 곳
+        print(str.slice(-10,-6));
+        //[3] substring(start, [end]): slice()와 동일하나, 음수값을 줄 경우
+        // index를 0으로 간주함
+        let str3="Java와 디지털 융합기술 활용";
+        //디지털 추출해보기
+        print(str3.substring(6,9));
+        print(str3.substring(6));
+        print(str3.slice(-2));
+        print(str3.substring(-2));
+        print(str3.substring(str3.length-2));
+
+        //[4] substr(start, count): start인덱스에서 count수 만큼 문자열을 추출
+        document.write("<hr color='red'>");
+        print(str3.substr(10,4));
+
+        //[5] slipt("구분문자"): 구분문자를 기준으로 쪼개어 배열에 담아 반환함
+        let tokens=str3.split(" ");
+        print(tokens[0]);
+        print(tokens[1]);
+        print(tokens[2]);
+        print(tokens[3]);
+
+        //[6] indexOf(str,[position]): str문자열이 위치한 곳의 인덱스 번호를
+        //반복 검색한 str이 없으면 -1을 반환한다.
+        let str4="괴물쥐 다2빙 ㅋㅋㅋ";
+        let i=str4.indexOf("다2빙");
+        print(i);
+        i=str4.indexOf("다1빙");
+        print(i);
+        //[7] lastIndexOf(str,[pos]):뒤에 부터 문자열을 검색함
+        i=str4.lastIndexOf("다2빙");
+        print(i);
+        //[8] charAt(index)
+        c=str4.charAt(0);
+        print(c);
+        //[9]
+        //[10] replace(old, new);
+        print(str4.replace("다2빙","다1빙"));
+
+    </script>
+</body>
+</html>

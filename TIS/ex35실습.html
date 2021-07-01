@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div#wrap{
+            width: 70%;
+            height: 700px;
+            border: 2px solid slateblue;
+            text-align: center;
+            margin: 30pc auto;
+        }
+        div#wrap button{
+            background-color: darkcyan;
+            width: 200px;
+            height: 30px;
+            padding: 4px;
+            color: yellow;
+        }
+    </style>
+
+    <script>
+        var btn, obj;
+        window.onload
+            btn=document.getElementById('start');
+            obj=document.getElementById('result');
+            //[1]게임시작 버튼 이벤트 처리
+
+        function startGame() {
+            //1. prompt창 띄워서 가위(1), 바위(2), 보(3) 입력받기
+
+            //2. 컴퓨터는 랜덤한 정수값 1,2,3 중 하나를 발생시킨다.
+
+            //3. 내가 이긴경우, 비긴경우, 진경우
+
+            //4. 그 결과를 id가 result인 곳에 이미지
+            // 파일과 함꼐 출력한다. innerHTML속성 사용
+        }
+
+    </script>
+
+</head>
+<body>
+    <div id="wrap">
+        <h1>가위 바위 보 게임</h1>
+        <button id="start">게임시작</button>
+    </div>
+</body>
+</html>
