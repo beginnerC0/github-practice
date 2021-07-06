@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ECMAScript 6이후 추가된 문법</h1>
+    <script>
+        //3. 단독 속성명 사용 가능
+        const user={
+            name:'홍길동',
+            age:22,
+            lang:'JavaScript'
+        }
+        document.write(user,"<br>");
+        console.log(user);
+        let age=33;
+        let lang='Java';
+
+        const user2={
+            name:'김두한',
+            age,     //속성값의 일부가 이미 변수로 존재하면 간단하게 변수명만 적어줄 수 있다.
+            lang
+        }
+        console.dir(user2);
+        //4. spread연산자(전개 연산자) 사용
+        // 배열이나 객체의 모든 속성을 풀어놓을 때 사용하는 문법
+        let one=[1,2,3,4];
+        let two=[22,33];
+
+        let arr=[...one,'A',...two,'B'];//배열의 개수 
+        document.write('arr.length='+arr.length,"<br>");
+        arr.forEach(function(val,i){
+            document.write(val+", ");
+        })
+
+        //원본배열을 copy해서 사본 배열을 만들고자 할 때 사용한다.
+        let arr2=[7,8,9];//원본배열
+
+        let arr2Copy=[...arr2];//사본배열
+
+        let arr3=arr2;//arr3는 원본배열에 함께 참조함. 즉 사본이 아님 => ?
+
+        //arr3에 10을 추가하기
+        arr3.push(10);
+        console.log(arr3);
+        console.log(arr2);
+
+        arr2Copy.push(200);//사본에 200추가
+        console.log(arr2Copy);
+        console.log(arr2);
+        //객체에도 spread연산자를 적용할 수 있다.
+        const obj1={
+            name:'김행복',
+            age:17
+        }
+        const obj2={...obj1};//사본 객체
+        console.log(obj1);
+        console.log(obj2);
+        obj2.age=25;
+
+        console.log(obj1);
+        console.log(obj2);
+
+        const o1={name:'park',age:19};
+        const o2={hobby:'health'};
+
+        const o3={...o1, ...o2, addr:'seoul'};
+        console.log(o3);
+        
+
+       
+
+    </script>
+</body>
+</html>

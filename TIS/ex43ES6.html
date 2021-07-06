@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ECMAScript 6이후 변경된 사항</h1>
+    <script>
+        //1. LET : 변수 선언시 사용
+        //2. CONST : 상수 선언시 사용
+
+
+        var x=1;//전역변수
+        function bar(){
+            //var x=10;//지역변수
+            document.write('1. x='+x,"<br>");
+            //unknown 변수 hoisting 발생함
+            var x=2;
+            document.write('2. x='+x,"<br>");
+        }
+        bar();
+        for(i=0;i<3;i++){
+            document.write("i=",i,"<br>");
+        }
+        document.write("<h1>i="+i+"</h1>");
+
+        let sum=0;
+        for(let i=0;i<=10;i++){
+            sum+=i;
+        }
+        document.write("sum"+sum,"<br>");
+        document.write("<h1>i="+i+"</h1>");
+
+        var pi=3.14;
+        document.write('pi=',pi,"<br>");
+
+        const PI=3.14;//Const로 값을 지정하면 상수가 됨 =>> 값 변경 불가능 상태
+        document.write('PI=',PI,"<br>");
+
+        var pi=5.87;
+        document.write('pi=',pi,"<br>");
+
+        // const PI=6.84;//Const로 값을 지정하면 상수가 됨 =>> 값 변경 불가능 상태
+        // document.write('PI=',PI,"<br>");
+
+        var a='hello';
+        document.write('a=',a,"<br>");
+        var a=100;
+        document.write('a=',a,"<br>");
+
+        let b='hi';
+        document.write('b=',b,"<br>");
+        //let b=200;  ==> [x]
+        b=200;
+        document.write('b=',b,"<br>");
+    </script>
+</body>
+</html>

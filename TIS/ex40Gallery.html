@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex40Gallery</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        #gallery{
+            width:700px;
+            margin:30px auto;
+            padding:10px;
+            border:1px solid #999;
+            box-shadow: 0 7px 7px rgba(0,0,0,0.3);
+        }
+        #gallery h1{
+            text-align:center;
+        }
+        #gallery img{
+            border:1px solid #666;
+        }
+        #photo{
+            text-align:center;
+        }
+        #photo img{
+            width: 90%;
+            margin: 20px auto;
+        }
+        #gallery ul{
+            width:800px;
+            margin:0 auto;
+            overflow:hidden;
+        }
+        #plist ul li{
+            width:120px;
+            float:left;
+            text-align:center;
+        }
+        #plist{
+            width:370px;
+            margin:10px auto;
+            overflow: hidden;
+            /* border:2px solid darkblue; */
+        }
+       
+        #inlist img{
+            width:100%;
+            height: 150px;
+        }
+        #inlist li{
+            width:185px;
+            margin:1px;
+            padding:1px;
+        }
+        li{
+            list-style:none;
+        }
+        a{
+            text-decoration: none;
+            color:black;
+        }
+        .btn_wrap{
+            text-align: center;
+        }
+        .btn_wrap a{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="gallery">
+        <h1>갤러리</h1>
+        <p id="photo">
+            <img id="big" src="./images/car1.JPG">
+        </p>
+        <div id="plist">
+            <ul id="inlist">
+                <li><a href="./images/car1.JPG"><img src="./images/car1.JPG" alt="car1"></a></li>
+                <li><a href="./images/car2.JPG"><img src="./images/car2.JPG" alt="car2"></a></li>
+                <li><a href="./images/car3.JPG"><img src="./images/car3.JPG" alt="car3"></a></li>
+                <li><a href="./images/car4.JPG"><img src="./images/car4.JPG" alt="car4"></a></li>
+                <li><a href="./images/car5.JPG"><img src="./images/car5.JPG" alt="car5"></a></li>
+            </ul>
+        </div>
+        <p class="btn_wrap">
+            <a href="#" id="before_btn">◀</a>
+            <a href="#" id="next_btn">▶</a>
+        </p>
+    </div>
+
+    <script>
+        //getElementsByTagName():반환타입HTMLCollection, querySelectorAll() :반환타입 NodeList
+        let aList=document.querySelectorAll('#inlist li a');
+        //alert(aList.length);
+
+        let bigImg=document.querySelector('#big');//이미지객체
+        
+        let ulObj = document.querySelector('#inlist');
+
+        let btn1=document.getElementById('before_btn');
+        let btn2=document.getElementById('next_btn');
+        let cnt=0;
+
+        for(let i=0;i<aList.length;i++){
+            aList[i].onclick=function(evt){
+                bigImg.src = this.href;
+                evt.preventDefault();
+            }
+        }
+//[5]다음 버튼을 클릭할 때 마다 marginLeft속송의 값을  120px만큼 증가(우측으로 이동),
+//이전버튼을 클릭할 때 마다  120px만큼 감소(좌측으로 이동)
+        btn2.onclick=function(){//이후 버튼 클릭시=> 이후 이미지
+            console.log('cnt='+cnt);
+            if(cnt>=aList.length-1){
+                alert('마지막 사진입니다')
+                return;
+            }
+            cnt++;
+            bigImg.src=aList[cnt].href;
+            ulObj.style.marginLeft=((-124*cnt)+"px");
+        }
+        btn1.onclick=function(){//이전 버튼 클릭시
+            if(cnt<=0){
+                alert('처음 사진입니다');
+                return;
+            }
+            cnt--;
+            bigImg.src=aList[cnt].href;
+            ulObj.style.marginLeft=((-124*cnt)+"px");
+        }
+      //이미지에 사진 넣기
+
+    </script>
+</body>
+</html>
+<!-- ex40Gallery.html -->

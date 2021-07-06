@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>메모리 절약을 위한 프로토타입 사용</h1>
+    <!-- 교재 151P -->
+    <p>
+        생성자 함수를 선언해서 속성과 함수를 등록해서 객체를 생성하면,
+        객체를 생성한 만큼 함수가 등록된다.
+        => 메모리 낭비 발생
+        <br>
+        이럴 때는 함수에 프로토타입을 사용하여 함수를 등록하면 
+        메모리 낭비를 줄일 수 있다.
+    </p>
+    <script>
+        function Student(name, kor, eng){
+            this.name=name;
+            this.kor=kor;
+            this.eng=eng;
+            this.showInfo
+        }
+        Student.prototype.showInfo=function(){
+            let str=`
+                <h3>이름: ${this.name}</h3>
+                <h3>국어: ${this.kor}</h3>
+                <h3>영어: ${this.eng}</h3>
+                <hr color='blue'>
+            `;
+            return str;
+        }
+        //학생의 함계점수와 평균점수를 출력하는
+        // showScore()함수 작성해서 호출해보기
+        Student.prototype.showScore=function(){
+            let sum=this.kor+this.eng;
+            let avg=sum/2;
+            let str=`
+                <h3>이름: ${this.name}</h3>
+                <h3>합계점수: ${sum}</h3>
+                <h3>평균점수: ${avg}</h3>
+            `;
+            document.write(str);
+        }
+        
+
+        //객체 생성
+        let s1=new Student("엄준식",86,85);
+        let s2=new Student("손인욱",43,28);
+        let s3=new Student("김찬호",82,27);
+
+        document.write(s1.showInfo);
+        document.write(s2.showInfo);
+        document.write(s3.showInfo);
+
+        s1.showScore();
+        s2.showScore();
+        s3.showScore();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ECMAScript 6이후 추가된 문법</h1>
+    <script>
+        //class로 구성 가능
+        class People{
+            constructor(name, age){
+                this.name=name;
+                this.age=age;
+            }
+            info(){
+                let str=`
+                <p>
+                    이름: ${this.name}<br>
+                    나이: ${this.age}<br>
+                </p>
+                `
+                document.write(str);
+            }
+        }
+
+        let p1=new People("장지환",27);
+        let p2=new People("진재승",28);
+
+        p1.info();
+        p2.info();
+
+        //class표현식
+        const Car = class{
+            constructor(color, velocity){
+                this.color=color;
+                this.velocity=velocity;
+            }
+        }
+
+        let c1=new Car('red',100);
+        document.write(c1.color+"/ "+c1.velocity);
+
+    </script>
+</body>
+</html>

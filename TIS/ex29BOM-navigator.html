@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex29BOM_navigator.html</title>
+</head>
+<body>
+    <h1>navigator 객체</h1>
+    <p>현재 사용하는 브라우저 정보와 운영체제 정보를 제공하는 객체</p>
+    <!-- 속성
+   [1] appCodeName : 현재 브라우저의 코드명. 현 시점의 모든 브라우저는 Mozilla를 반환한다.
+   [2] appName : 현재 브라우저 이름 반환. 현 시점의 모든 브라우저는  Netscape을 반환
+   [3] appVersion: 버전정보. 현 시점의 모든 브라우저는 5.0 (Windows)를 반환.
+   [4] language : 현재 브라우저가 사용하고 있는 언어 반환. 한국어일 경우 "ko"반환
+   [5] product : 브라우저 엔진 이름. 크롬일 경우 Gecko를 반환
+   [6] platform : 현재 컴퓨터 운영체제 정보 . os가 64bit라도 브라우저가 32bit로 설치되었다면 Win32라고 나타남
+   [7] onLine : 온라인 상태여부
+   [8] userAgent : 브라우저와 운영체제의 종합정보 제공
+   -->
+   <script>
+       function print(str,val){
+           document.write(`<h1>${str} : ${val}</h1>`)
+
+       }
+       print('appCodeName',navigator.appCodeName);
+       print('appName',navigator.appName);
+       print('appVersion',navigator.appVersion);
+       print('language',navigator.language);
+       print('product',navigator.product);
+       print('platform',navigator.platform);
+       print('onLine',navigator.onLine);
+       print('userAgent',navigator.userAgent);
+       //indexOf(검색어) => 검색어가 위치한 곳의 인덱스 번호를 반환
+       //               해당 검색어가 없으면 -1을 반환한다.
+       var info = navigator.userAgent.toLowerCase();
+       var str = '';
+       if(info.indexOf('windows')>-1){
+
+        str = 'images/windows.png';
+        
+        }else if(info.indexOf('macintosh')>-1){
+        
+        str = 'images/ios.png'
+         }else if(info.indexOf('iphone')>-1){
+        
+        str = 'images/ios.png'
+        }else if(info.indexOf('android')>-1){
+        str = 'images/android.png'
+        }
+        document.write(`<div style="tex-align : Center">
+            <img src="${str}">)</div>`);
+        
+        
+
+
+   </script>
+   <hr color='red'>
+   <h1>screen객체</h1>
+   <!-- 모니터의 해상도 폭, 높이 드으이 정보 -->
+   <script>
+       print('모니터 해상도 폭', screen.width);
+       print('모니터 해상도 높이', screen.width);
+       print('모니터 해상도 작업표시줄을 제외한 폭', screen.width);
+       print('모니터 해상도 작업표시줄 제외한 높이', screen.width);
+   </script>
+   <hr>
+</body>
+</html>
+<!-- ex29BOM_navigator.html -->

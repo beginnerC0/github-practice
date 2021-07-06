@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*event 처리방법
+        [1] 태그 내에 이벤트 핸들러를 기술하는 방법
+        [2] addEventListener('이벤트이름',이벤트 핸들러 함수);
+        [3] literal 방식의 이벤트 처리
+            b1.onclick=function(){....}
+        */
+       function check(obj){
+        //    alert(obj);
+            let val=obj.value;
+            if(val.length>6){
+                alert('입력값은 6자 이내어야 합니다');//넘어가는 순간 프롬프트 창에 메시지
+                obj.value='';
+                obj.focus();
+                return;
+            }
+       }
+       function check2(obj){
+           let val=obj.value;
+            //입력값이
+            // alert(val);
+            console.log(val);
+       }
+    </script>
+</head>
+<body>
+    <h1>event처리</h1>
+    아이디: <input type="text" onfocus="this.style.border='3px dashed hotpink'"
+    onblur="this.style.border=''";
+    onchange="document.bgColor='#bb3cee'";
+    oninput="check(this)";
+    >
+
+   <!-- onfocus: 입력 포커스가 온 경우
+         onblur : 입력 포커스가 옮겨진 경우
+         onchange: 입력 필드값을 변경할 때
+         oninput : 입력할 때
+     
+         onkeydown : 키를 누를 때 (모든 키를 인식함)
+         onkeypress : 타이핑할 때 (ctrl, shift, alt, delete..키는 인식 못함)
+         onkeyup    : 키를 눌렀다 뗄때
+    -->
+
+    <p></p>
+    비밀번호: <input type="password" name="pw" id="pw"
+        onkeydown="console.log('keydown')"
+        onkeypress="console.log('keypress')"
+        onkeyup="console.log('keyup')"
+    >
+    <p id="pwMsg">
+        *비밀번호는 4자 이상 6자 이내
+    </p>
+    이름: <input type="text" name="name" id="name"
+    onkeydown="check2(this)"
+    onmouseenter="this.style.backgroundColor='#33ccff'"
+    onmouserleave="this.style.backgroundColor=''"
+    >
+
+    <!-- mouseenter : 마우스가 영역 안에 들어왔을 때 
+         mouseleave : 마우스가 영역 밖으로 나갈 때 
+         mouseover
+         mouseout
+
+         onclick : 클릭할 때
+         ondblclick: 더블 클릭할 때
+         onselect : 선택했을 때
+    -->
+
+    <p></p>
+    <hr color="red">
+    <table style="width: 80%; margin: auto; height: 300px; border: 1px solid darkblue;">
+        <tr>
+            <td width="33%" onclick="this.style.backgroundColor='#dd99cc'">클릭</td>
+            <td width="33%" ondblclick="this.style.backgroundColor='lime'">더블클릭</td>
+            <td width="33%" onselect="this.style.backgroundColor='pink'">
+                <textarea>이 곳에 쓴 내용을 select하세요</textarea>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

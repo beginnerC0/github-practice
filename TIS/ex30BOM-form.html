@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function check(){
+            //form태그에 name을 입력하면
+            //"form이름.input이름"
+            if(!frm.name.value){
+                alert('이름을 입력해야 해요');
+                frm.name.focus();//입력 포커스 주기
+                return;
+            }
+            if(frm.name.value.length>5){
+                alert('이름은 5자 이내여야 해요');
+                frm.name.select();
+                return;
+            }
+            frm.submit();
+        }
+
+        function check2(){
+            //form에 name을 주지 않았을 경우
+            //window.document.forms[0] 방식으로 접근한다.
+            if(!document.forms[1].name.value){
+                alert('이름을 입력하세요');
+                document.forms[1].name.focus();
+                return;
+            }
+            let vid=document.forms[1].id;
+            if(!vid.value){
+                alert('아이디를 입력하세요');
+                vid.focus();
+                return;
+            }
+            document.forms[1].method='post';
+            alert(document.forms[1].action);
+            document.forms[1].action='password.jsp';
+            document.forms[1].submit();
+
+        }
+
+    </script>
+</head>
+<body>
+    <h1>form객체</h1>
+    <form name="frm" action="findId.jsp" method="post">
+            <h1>아이디 찾기</h1>
+            이름: <input type="text" name="name" id="name">
+            <button type="button" onclick="check()">Submit</button>
+            <!--button은 기본타입이 submit임 서버에 전송하려고 한다.
+            유효성 체크를 하려면 submit이 아닌 일반 button타입으로
+            설정하고 check()함수 통해서 submit되도록 처리해보자.
+            -->
+    </form>
+    <hr color='red'>
+
+    <form action="findPwd.jsp">
+        <h1>비밀번호 찾기</h1>
+        이름: <input type="text" name="name"><p></p>
+        아이디: <input type="text" name="id"><p></p>
+        <button type="button" onclick="check2()">Submit</button>
+    </form>
+</body>
+</html>

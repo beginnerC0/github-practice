@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1>Date객체</h1> 
+   <button onclick="showToday()">오늘 날짜,현재시간 보기</button>
+   <button onclick="showInfo(2021,7,25)">2021-7-25정보 보기</button>
+   <button onclick="showLastDay()">현재 월의 마지막 날짜 구학</button>
+   <button onclick="showLast(2021, 2)">2021-2월의 마지막일</button>
+   <hr color='red'>
+   <div id="result">
+
+   </div>
+   <script>
+       let obj=document.getElementById('result');
+       let dyArr=["일","월","화","수","목","금","토"];
+       let showToday=function(){
+            let date=new Date();
+            let str='<h2>';
+            str+=date.getFullYear()+"년 ";
+            str+=(date.getMonth()+1)+"월 ";
+            //1월:0을 반환 ~  12월: 11을 반환
+            str+=date.getDate()+"일 ";
+            str+=dyArr[date.getDay()]+"요일 ";
+            str+=date.getHours()+": "+date.getMinutes()+": "+date.getSeconds();
+            str+="</h2>";
+            obj.innerHTML=str;
+       }
+       let showInfo=function(yy, mm, dd){
+           //alert(yy+"/"+mm+"/"+dd);
+           let date=new Date(yy,mm-1,dd);//특정일
+           
+           let today=new Date();//오늘
+
+           let lapTime=date.getTime()-today.getTime();
+           //alert(lapTime);
+           let dDay=Math.ceil(lapTime/(1000*60*60*24));
+           //alert(dDay);
+
+           obj.innerHTML=yy+"년 "+mm+"월"+dd+"일은 ";
+           obj.innerHTML+=dyArr[date.getDay()]+"요일 입니다";
+           obj.innerHTML+="<h1 style='color:red'>D-day: "+dDay+"</h1>";
+           //[실습] 오늘부터 12/25까지 몇 일 남았는지 계산해서 출력하기 ==> getTime() 함수 이용하기
+           //getTime()함수는 1970년 1월1일 기준으로한 밀리초를 반환
+           //남은 일수(밀리초)= 특정날짜 - 오늘날짜
+           /*
+           1초: 1000밀리초
+           1분(60초):  1000*60
+           1시간(60분): 1000*60*60
+           1일(24시간): 24*1000*60*60
+           */
+
+       }
+       let showLastDay=function(){
+           let d=new Date();
+           let yy=d.getFullYear();
+           let mm=d.getMonth();//현재 7월=> 6을 반환
+
+           let d2=new Date(yy, mm+1, 0);
+           let lastDy=d2.getDate();
+            obj.innerHTML=`
+            <h1>${yy}년 ${mm+1}월은 ${lastDy}일까지 있습니다.</h1>
+            `;
+       }
+
+       let showLast=function(yy, mm){
+        let d=new Date(yy,mm,0);   //2월의 마지막 날
+        let lastDy=d.getDate();
+        obj.innerHTML=`<h1>
+            ${yy}년 ${mm}월 ${lastDy}일
+            </h1>
+        `;
+       }
+   </script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <style>
+        div#cal{
+            margin-top:50px;
+        }
+        div#cal table{
+            width:70%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        div#cal table>tbody>tr>th, td{
+            font-size: 1em;
+            height:45px;
+            text-align: center;
+        }
+        div#cal th{
+            background-color: bisque;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        div#cal td{
+            font-weight: bold;
+        }
+        div#cal td.dy{
+            font-weight: bold;
+        }
+        div#cal td.sun{
+            color:red;
+        }
+         div#cal td.sat{
+            color:blue;
+        }
+    </style>
+    <script>
+        let obj=null;
+        let day=["일","월","화","수","목","금","토"];
+        window.onload=function(){
+            obj=document.getElementById('cal');
+            //alert(obj);
+        }//onload-----------
+        function showCal(yy,mm){
+            //alert(yy+"/"+mm);
+            var fist_date=null;//해당 월의 1일을 구하자
+            if(!yy||!mm){
+                first_date=new Date();
+                yy=first_date.getFullYear();
+                mm=first_date.getMonth()+1;
+                first_date=new Date(yy, mm-1, 1)
+            }else{
+                first_date=new Date(yy,mm-1, 1);
+            }
+            //해당 월의 1일의 요일 알아내기
+             //var first_day=day[first_date.getDay()];
+             //alert(first_day);
+             
+             var first_day=first_date.getDay();
+
+            //해당 월의 마지막 날짜 알아내기
+            var total_days=lastDate(yy,mm);
+            // alert(total_days);
+            
+            var str="<table border='1'>";
+                str+="<tr><th colspan='7'>"+yy+"년"+mm+"월";
+                str+="</th></tr>";
+                //요일 행 추가    
+                str+="<tr>";
+                for(let i=0;i<day.length;i++){
+                    if(i==0){//일요일
+                        str+="<td class='dy sun'>"+day[i]+"</td>";
+                    }else if(i==6){//토요일
+                        str+="<td class='dy sat'>"+day[i]+"</td>";
+                    }else{//나머지요일
+                        str+="<td class='dy'>"+day[i]+"</td>";
+                    }
+                }
+                str+="</tr>"; 
+                
+                //매월 1일의 요일에 해당할 때까지 빈공백 문자로 컬럼 채우기
+                var col=0;
+                str+="<tr>";
+                for(let i=0;i<first_day;i++){
+                    str+="<td>&nbsp;</td>";
+                    col++;
+                }
+                //1일부터 그달의 마지막 날까지 출력
+                for(let i=1;i<=total_days;i++){
+                    if(col==0){//일요일
+                        str+="<td class='sun'>"+i+"</td>";
+                    }else if(col==6){//토요일
+                        str+="<td class='sat'>"+i+"</td>";    
+                    }else{
+                        str+="<td>"+i+"</td>";
+                    }
+
+                    col++;
+                    if(col%7==0){
+                        str+="</tr><tr>";//줄바꿈
+                        col=0;    
+                    }
+                }//for-------------
+                str+="</tr>";
+                str+="</table>";
+            obj.innerHTML=str;    
+        }
+
+        function lastDate(yy, mm){
+            let d=new Date(yy,mm,0);
+            return d.getDate();
+        }
+
+    </script>
+</head>
+<body>
+    <button id="bt1" onclick="showCal()">이 달의 달력</button>
+    <button id="bt2" onclick="showCal(2021,8)">2021년 8월 달력</button>
+    <button id="bt3" onclick="showCal(2021,2)">2021년 2월 달력</button>
+    <button id="bt4" onclick="showCal(2020,2)" >2020년 2월 달력</button>
+
+    <div id="cal">
+        <!-- 여기에 달력을 출력 -->
+    </div>
+</body>
+</html>
